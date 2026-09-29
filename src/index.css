@@ -1,0 +1,240 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #ffffff;
+  color: #111111;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+::selection {
+  background: #111111;
+  color: #ffffff;
+}
+
+
+/* =========================================
+   GLOBAL BUTTON CONFETTI ANIMATION
+   Usage:
+   <div class="confetti-wrapper">
+     <div class="confetti-particles">
+       <span class="confetti-piece confetti-piece-1"></span>
+       ...
+     </div>
+
+     <button>Your Button</button>
+   </div>
+========================================= */
+
+.confetti-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Full-width buttons ke liye */
+.confetti-wrapper.confetti-full {
+  display: block;
+  width: 100%;
+}
+
+.confetti-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+  overflow: visible;
+}
+
+.confetti-piece {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 7px;
+  height: 11px;
+  border-radius: 1px;
+  opacity: 0;
+  animation: buttonConfetti 2.8s ease-out forwards;
+}
+
+/* =========================
+   PARTICLE COLORS + MOVEMENT
+========================= */
+
+.confetti-piece-1 {
+  background: #ef4444;
+  animation-delay: 0s;
+  --x: -140px;
+  --y: -90px;
+  --r: 320deg;
+}
+
+.confetti-piece-2 {
+  background: #2563eb;
+  animation-delay: 0.1s;
+  --x: -95px;
+  --y: -130px;
+  --r: 180deg;
+}
+
+.confetti-piece-3 {
+  background: #f59e0b;
+  animation-delay: 0.2s;
+  --x: -40px;
+  --y: -150px;
+  --r: 450deg;
+}
+
+.confetti-piece-4 {
+  background: #22c55e;
+  animation-delay: 0.05s;
+  --x: 35px;
+  --y: -140px;
+  --r: 270deg;
+}
+
+.confetti-piece-5 {
+  background: #8b5cf6;
+  animation-delay: 0.15s;
+  --x: 100px;
+  --y: -110px;
+  --r: 540deg;
+}
+
+.confetti-piece-6 {
+  background: #ec4899;
+  animation-delay: 0.25s;
+  --x: 145px;
+  --y: -60px;
+  --r: 360deg;
+}
+
+.confetti-piece-7 {
+  background: #06b6d4;
+  animation-delay: 0.1s;
+  --x: -150px;
+  --y: 40px;
+  --r: 400deg;
+}
+
+.confetti-piece-8 {
+  background: #f97316;
+  animation-delay: 0.2s;
+  --x: -100px;
+  --y: 85px;
+  --r: 250deg;
+}
+
+.confetti-piece-9 {
+  background: #eab308;
+  animation-delay: 0s;
+  --x: -35px;
+  --y: 100px;
+  --r: 600deg;
+}
+
+.confetti-piece-10 {
+  background: #10b981;
+  animation-delay: 0.18s;
+  --x: 45px;
+  --y: 95px;
+  --r: 320deg;
+}
+
+.confetti-piece-11 {
+  background: #3b82f6;
+  animation-delay: 0.08s;
+  --x: 110px;
+  --y: 70px;
+  --r: 500deg;
+}
+
+.confetti-piece-12 {
+  background: #ef4444;
+  animation-delay: 0.28s;
+  --x: 155px;
+  --y: 20px;
+  --r: 280deg;
+}
+
+/* =========================
+   MAIN ANIMATION
+========================= */
+
+@keyframes buttonConfetti {
+  0% {
+    opacity: 0;
+    transform:
+      translate(-50%, -50%)
+      scale(0)
+      rotate(0deg);
+  }
+
+  10% {
+    opacity: 1;
+    transform:
+      translate(-50%, -50%)
+      scale(1)
+      rotate(0deg);
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(
+        calc(-50% + var(--x)),
+        calc(-50% + var(--y))
+      )
+      scale(0.7)
+      rotate(var(--r));
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .confetti-piece {
+    animation: none;
+    display: none;
+  }
+}
